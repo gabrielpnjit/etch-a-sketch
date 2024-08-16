@@ -21,6 +21,21 @@ function createGridBoxes(size) {
             grid.style.minWidth = `${boxSize}px`;
             grid.style.maxWidth = `${boxSize}px`;
             grid.style.minHeight = `${boxSize}px`;
+
+            // round corners of screen
+            if (i == 0 && j == 0) {
+                grid.style.borderTopLeftRadius = "16px";
+            }
+            else if (i == 0 && j == size - 1) {
+                grid.style.borderTopRightRadius = "16px";
+            }
+            else if (i == size - 1 && j == 0) {
+                grid.style.borderBottomLeftRadius = "16px";
+            }
+            else if (i == size - 1 && j == size - 1) {
+                grid.style.borderBottomRightRadius = "16px";
+            }
+
             grid.addEventListener("mouseover", onHover);
             gridContainer.appendChild(grid);
         }
@@ -43,6 +58,16 @@ densityButtons.addEventListener("click", (e) => {
             createGridBoxes(80)
             break;
     }
+})
+
+const clearButton = document.querySelector("#clear");
+// TODO: implement clearing
+clearButton.addEventListener("click", () => {
+    gridContainer.childNodes.forEach((child) => {
+        if (child.classList.contains('grid-box-filled')) {
+            child.classList.remove('grid-box-filled');
+        }
+    })
 })
 
 // initialize grid

@@ -70,5 +70,10 @@ clearButton.addEventListener("click", () => {
     })
 })
 
+gridContainer.addEventListener("dragstart", (e) => {
+    console.log("yes");
+    e.preventDefault();
+})
+
 // initialize grid
 createGridBoxes(40)
